@@ -576,7 +576,7 @@ def seg_track_app():
                         with gr.Row():
                             with gr.Column(scale=0.5):
                                 box_threshold = gr.Slider(
-                                    label="Box Threshold", minimum=0.0, maximum=1.0, value=0.25, step=0.001
+                                    label="Box Threshold", minimum=0.0, maximum=1.0, value=0.4, step=0.001
                                 )
                             with gr.Column(scale=0.5):
                                 text_threshold = gr.Slider(
@@ -609,16 +609,16 @@ def seg_track_app():
                                 minimum = 1,
                                 step=1,
                                 maximum = 9999,
-                                value=100,
+                                value=9999,
                                 interactive=True,
                             )
 
                             max_obj_num = gr.Slider(
                                 label='max_obj_num',
-                                minimum = 50,
+                                minimum = 1,
                                 step=1,
                                 maximum = 300,
-                                value=255,
+                                value=1,
                                 interactive=True
                             )
                             with gr.Accordion("aot advanced options", open=False):
@@ -1153,7 +1153,7 @@ def seg_track_app():
             gr.Examples(
                 examples=[
                     # os.path.join(os.path.dirname(__file__), "assets", "840_iSXIa0hE8Ek.mp4"),
-                    os.path.join(os.path.dirname(__file__), "assets", "blackswan.mp4"),
+                    # os.path.join(os.path.dirname(__file__), "assets", "blackswan.mp4"),
                     # os.path.join(os.path.dirname(__file__), "assets", "bear.mp4"),
                     # os.path.join(os.path.dirname(__file__), "assets", "camel.mp4"),
                     # os.path.join(os.path.dirname(__file__), "assets", "skate-park.mp4"),
@@ -1165,13 +1165,13 @@ def seg_track_app():
         with gr.Tab(label='Image-seq expamle'):
             gr.Examples(
                 examples=[
-                    os.path.join(os.path.dirname(__file__), "assets", "840_iSXIa0hE8Ek.zip"),
+                    # os.path.join(os.path.dirname(__file__), "assets", "840_iSXIa0hE8Ek.zip"),
                 ],
                 inputs=[input_img_seq],
             )
     
     app.queue(concurrency_count=1)
-    app.launch(debug=True, enable_queue=True, share=True)
+    app.launch(server_name="0.0.0.0", server_port=23333, debug=True, enable_queue=True, share=True)
 
 
 if __name__ == "__main__":

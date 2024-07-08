@@ -22,7 +22,7 @@ def colorize_mask(pred_mask):
     save_mask = save_mask.convert(mode='RGB')
     return np.array(save_mask)
 
-def draw_mask(img, mask, alpha=0.5, id_countour=False):
+def draw_mask(img, mask, alpha=0.2, id_countour=False):
     img_mask = np.zeros_like(img)
     img_mask = img
     if id_countour:
